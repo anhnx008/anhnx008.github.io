@@ -173,7 +173,6 @@ input[type]{
     font-size: 20px;
     text-align:center;
     height: 20%;
-    z-index:500;
     bottom:80px;
     padding-top:10px;
 }
@@ -193,7 +192,6 @@ input[type]{
         margin-top: 15%;
         width:530px;
         padding-right:5px;
-        background-color: green;
     }
 
     footer{
@@ -213,7 +211,6 @@ input[type]{
         margin-top: 20%;
         width:530px;
         padding-right:5px;
-        background-color: yellow;
 }
         
     footer{
@@ -238,9 +235,8 @@ input[type]{
     #ContentBox{
         margin-left:5%;
         margin-top: 40%;
-        width:530px;
+        width:300px;
         padding-right:5px;
-        background-color: orange;
     }
             
     footer{
