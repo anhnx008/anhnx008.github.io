@@ -228,18 +228,26 @@ input[type]{
         background-color: #ffffff;
         width: 100%;
         text-align: center;
-        padding: 4% 10% 4% 70%;
+        padding: 4% 10% 4% 10%;      
     }
         
     #ContentBox{
         margin-left:5%;
         margin-top: 40%;
-        width:300px;
+        width:350px;
         padding-right:5px;
+    }
+
+    #profileImage{
+        width:90%;
     }
             
     footer{
         height: 5%;
+    }
+
+    #Submitbtn{
+        width:20%;
     }
 }
 
