@@ -179,7 +179,6 @@ input[type]{
 
 /******** Media Queries ************/
 
-/* HTML page */
 @media screen and (max-width: 980px)
 {
     h1{
