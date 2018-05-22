@@ -1,0 +1,56 @@
+body{
+    min-height: 900px;
+}
+h1{
+    color: #ffffff;
+    font-size: 50px;
+    text-align: center;
+    font-family: 'Space Mono', monospace; 
+}
+
+h2{
+    font-family: 'Space Mono', monospace;
+    font-size: 25px;
+    color: #ffffff;
+    text-align: center;
+}
+
+h3{
+    color: #ffffff;
+    font-size: 20px;
+    text-align: center;
+    font-family: 'Space Mono', monospace;
+}
+
+
+#MainContainer{
+    background-image: url("../images/planet.png");
+    margin-top: 5%;
+    margin-left: 30%;
+    background-color: black;
+    width: 800px;
+    border: 2px solid #ffff;
+    z-index: 500;
+    height: 700px;
+}
+
+#GameSpace{
+    margin-top: 100px;
+}
+
+#display-correct-letters{
+    text-align: center;
+    color: yellow;
+}
+
+#Stats{
+    margin-top: 5px;
+    padding-top: 5px;
+    padding-bottom: 5px;
+
+}
+
+p{
+    font-family: 'Space Mono', monospace;
+    color: blueviolet;
+}

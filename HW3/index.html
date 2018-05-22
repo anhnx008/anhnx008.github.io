@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang = "en-us">
+
+<head>
+    <meta charset = "UTF-8">
+    <title>Hangman Game</title>
+
+    <!-- Link to external css and fonts-->
+    <link rel="stylesheet" type="text/css" href="./assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="./assets/css/style.css">
+    <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
+
+</head>
+<body background="assets/images/galaxy2.jpg">
+
+    
+
+    <div id="MainContainer">       
+            <h1>HANGMAN</h1>
+            <br>
+            <h2>Space Theme</h2>
+            <br><br>
+            <h3>Press Enter to start !</h3>
+
+        <div id="GameSpace">
+            <!-- Display area for current word -->
+            <div id="CurrentWord">
+            <pre><p style="color:yellow">              ***-----------------Current Word---------------***</p></pre><br><br>
+            <p id="display-correct-letters"></p><br>
+            
+            </div><br><br>
+
+            <!-- Display area guessed letters-->
+            <div id="GuessedLetters">
+            <p>*-------------------------------------------------------------------------------*</p>
+            <p>Guessed Letters: </p><br>
+            <span id="guessed-letters"></span><br><br>
+            <p>*-------------------------------------------------------------------------------*</p>
+            </div><br>
+
+            <!-- Display area for stats -->
+            <div id="Stats">
+                <pre><p>                          ________Game Stats________</p></pre><br>
+                <pre><p>                          Guesses Remaining: <span id="remaining-guess-count"></span> </p></pre>
+                <pre><p>                          Wins: <span id="win-count"> </span></p></pre>
+                <pre><p>                          Losses: <span id="loss-count"></span></p></pre><br>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Link to external javascript -->
+    <script type="text/javascript" src="./assets/javascript/game.js"></script>
+
+</body>
+
+
+
+
+
+
+</html>
