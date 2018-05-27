@@ -1,5 +1,5 @@
 body{
-    min-height: 900px;
+    min-height: 950px;
 }
 h1{
     color: #ffffff;
@@ -27,18 +27,24 @@ h3{
     font-family: 'Space Mono', monospace;
     font-size: 25px;
     margin-left: 40%;
-    display: inline-block;
+}
+
+#Instruction{
+    color: aqua;
+    font-family: 'Space Mono', monospace;
+    font-size: 20px;
+    text-align: center;
 }
 
 #MainContainer{
     background-image: url("../images/planet.png");
     margin-top: 5%;
-    margin-left: 30%;
+    margin-left: 25%;
     background-color: black;
     width: 800px;
     border: 2px solid #ffff;
     z-index: 500;
-    height: 700px;
+    height: 740px;
 }
 
 #GameSpace{
@@ -48,6 +54,11 @@ h3{
 #display-correct-letters{
     text-align: center;
     color: yellow;
+}
+
+#display-correct-word{
+    color: aqua;
+    text-align: center;
 }
 
 #guessed-letters{

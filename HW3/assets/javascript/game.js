@@ -2,7 +2,6 @@
 var currentword = "";
 var guessedLetters = [];
 var Wins = 0;
-var Losses = 0;
 var remainingGuesses = 10;
 var continueGame = false;
 var progressArray = [];
@@ -41,6 +40,12 @@ function CreateDashes(word)
     return dashesArray;
 }
 
+//Function to clear content 
+function setContent(elementID, input)
+{
+    document.getElementById(elementID).innerHTML = input;
+}
+
 //Display progress
 function DisplayProgress(id, array)
 {
@@ -61,7 +66,6 @@ function UpdateProgress(guess, word, tempArray, guessedLetters)
             {
                 tempArray[i] = guess;       
                 DisplayProgress("display-correct-letters", tempArray);
-                console.log("tempArray is: " + tempArray);
                 letterExist = true;
             }
         }
@@ -75,32 +79,24 @@ function UpdateProgress(guess, word, tempArray, guessedLetters)
         {
             guessedLetters.push(guess);
             remainingGuesses--;
-            document.getElementById("remaining-guess-count").innerHTML = remainingGuesses;
-            
-        }
-         
-        document.getElementById("guessed-letters").innerHTML =  guessedLetters.join(" ");   
+            setContent("remaining-guess-count", remainingGuesses);          
+        }        
+        setContent("guessed-letters", guessedLetters.join(" "));
     }
-}
-
-//Function to clear content 
-function setContent(elementID, input)
-{
-    document.getElementById(elementID).innerHTML = input;
 }
 
 //Function to setup game
 function setGame()
 {
-    //Generate new word and display available guesses
+    //Set remaining guess and clear out guessed letter section
     remainingGuesses = 10;
-    document.getElementById("remaining-guess-count").innerHTML = remainingGuesses;
+    setContent("remaining-guess-count", remainingGuesses);
     guessedLetters = [];
     setContent("guessed-letters", "");
+
+    //Generate new word and 
     currentword = HangmanWord.GenerateCurrentWord();
-    console.log(currentword);
     progressArray = CreateDashes(currentword);
-    console.log(progressArray);
     DisplayProgress("display-correct-letters", progressArray);
     continueGame = true;
 }
@@ -120,14 +116,13 @@ function resetGame()
     currentword = "";
     continueGame = false;
 }
+//****************************/
+
 
 //Listen to spacebar event to start game
 document.onkeyup = function(e){
     if(e.keyCode == 13)
     {
-        // //Reset the stats 
-        // resetGame();
-        
         //Set game
         setGame();
 
@@ -143,8 +138,10 @@ document.onkeyup = function(e){
                 if(remainingGuesses == 0)
                 {
                     audioGameOver.play();
-                    document.getElementById("Announcement").innerHTML = "GAME OVER! &#x1f625";
-                    continueGame = false;                   
+                    setContent("Announcement", "GAME OVER! &#x1f625");
+                    setContent("Instruction", "Press F5 to restart the game");
+                    setContent("display-correct-word", "Correct Word is: " + currentword);
+                    continueGame = false;               
                 }
                 else if(remainingGuesses > 0)
                 {
@@ -153,8 +150,9 @@ document.onkeyup = function(e){
                     //When user guessed the entire word correctly
                     if(!progressArray.includes("_")){
                         Wins++;
-                        document.getElementById("Announcement").innerHTML = "YOU GOT IT! &#128125";
-                        document.getElementById("win-count").innerHTML = Wins;
+                        setContent("Announcement", "YOU GOT IT! &#128125");
+                        setContent("Instruction", "KEEP GOING!");
+                        setContent("win-count", Wins);
                         audioSuccess.play();
                         continueGame = false;
                         setGame();                                       
