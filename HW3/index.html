@@ -11,20 +11,19 @@
     <link href="https://fonts.googleapis.com/css?family=Space+Mono" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Great+Vibes" rel="stylesheet">
 
-    <!-- Link to jquery -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-
 </head>
 <body background="assets/images/galaxy2.jpg">
-
-    
 
     <div id="MainContainer">       
             <h1>HANGMAN</h1>
             <br>
             <h2>Space Theme</h2>
             <br><br>
-            <h3>Press Enter to start !</h3>
+            <h3>Press Enter to begin !</h3>
+            <br>
+            <h3>Press Esc to quit</h3>
+            <br><br>
+            <span id="Announcement"></span>
 
         <div id="GameSpace">
             <!-- Display area for current word -->
@@ -46,8 +45,7 @@
             <div id="Stats">
                 <pre><p>                          ________Game Stats________</p></pre><br>
                 <pre><p>                          Guesses Remaining: <span id="remaining-guess-count"></span> </p></pre>
-                <pre><p>                          Wins: <span id="win-count"> </span></p></pre>
-                <pre><p>                          Losses: <span id="loss-count"></span></p></pre><br>
+                <pre><p>                          Wins: <span id="win-count"> </span></p></pre>         
             </div>
 
         </div>
