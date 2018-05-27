@@ -43,11 +43,16 @@ h3{
     color: yellow;
 }
 
+#guessed-letters{
+    color: green;
+    font-family: 'Space Mono', monospace;
+    margin-left: 5px;   
+}
+
 #Stats{
     margin-top: 5px;
     padding-top: 5px;
     padding-bottom: 5px;
-
 }
 
 p{
