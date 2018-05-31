@@ -133,17 +133,8 @@ document.onkeyup = function(e){
             if((event.keyCode >= 65) && (event.keyCode <= 90) && (continueGame))
              {
                 var userGuess = event.key;
-                
-                //Check if user has any guess remaining
-                if(remainingGuesses == 0)
-                {
-                    audioGameOver.play();
-                    setContent("Announcement", "GAME OVER! &#x1f625");
-                    setContent("Instruction", "Press F5 to restart the game");
-                    setContent("display-correct-word", "Correct Word is: " + currentword);
-                    continueGame = false;               
-                }
-                else if(remainingGuesses > 0)
+                               
+               if(remainingGuesses > 0)
                 {
                     UpdateProgress(userGuess.toLocaleLowerCase(), currentword, progressArray, guessedLetters);
                     
@@ -157,7 +148,17 @@ document.onkeyup = function(e){
                         continueGame = false;
                         setGame();                                       
                     }                   
-                }               
+                }
+                
+                //Check if user has any guess remaining
+                if(remainingGuesses == 0)
+                {
+                    audioGameOver.play();
+                    setContent("Announcement", "GAME OVER! &#x1f625");
+                    setContent("Instruction", "Press F5 to restart the game");
+                    setContent("display-correct-word", "Correct Word is: " + currentword);
+                    continueGame = false;               
+                }
              }
              
              //If user press Esc then reset game
