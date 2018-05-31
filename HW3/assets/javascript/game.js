@@ -119,7 +119,7 @@ function resetGame()
 //****************************/
 
 
-//Listen to spacebar event to start game
+//Listen to Enter event to start game
 document.onkeyup = function(e){
     if(e.keyCode == 13)
     {
