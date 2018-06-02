@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+
+<html lang="en-us">
+
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Crystals Collector</title>
+
+<!-- Links to css -->
+<link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+<link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+<!-- Link to external font -->
+<link href="https://fonts.googleapis.com/css?family=IM+Fell+French+Canon+SC" rel="stylesheet">
+
+<!-- Link to jQuery -->
+<script src="https://code.jquery.com/jquery.js"></script>
+</head>
+
+<body background="assets/images/background.jpg">
+
+<h1>Crystal Collectors!</h1>
+<br><br>
+
+<div id="Instructionbox">
+<p><b>Instruction:</b> </p><br>
+<p>You will be given a random number at the start of the game.</p><br>
+<p>There are four crystals below. By clicking on a crystal you will add a specific amount of points to your total score</p><br>
+<p>You win the game by matching your total score to random number, you lose the game if your total score goes above the random number</p><br>
+<p>The value of each crystal is hidden from you until you click on it</p><br>
+<p>Each time when the game starts, the game will change the values of each crystal.</p><br>   
+</div><br>
+
+<div id="randomNumberDisplay"></div>
+
+<div id="scoreDisplay">
+<p id="message"></p><br>
+<p>Wins: <span id="win-count"></span></p><br>
+<p>Losses: <span id="loss-count"></span></p>
+</div><br><br><br>
+
+<div class="label">Current Total: </div><br>
+<div id="currentTotalDisplay"></div>
+
+<div class="gemSection">
+<button id="greenGem" class="Gembtn"></button>
+<button id="redGem" class="Gembtn"></button>
+<button id="yellowGem" class="Gembtn"></button>
+<button id="blueGem" class="Gembtn"></button>
+</div>
+
+
+<!-- Link to javascript -->
+<script type="text/javascript" src="assets/javascript/game.js"></script>
+</body>
+
+</html>

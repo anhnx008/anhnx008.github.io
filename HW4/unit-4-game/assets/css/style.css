@@ -1,0 +1,87 @@
+h1{
+    font-family: 'IM Fell French Canon SC', serif;
+    font-size: 80px;
+    color: blueviolet;
+    text-align: center;    
+}
+
+button{
+    height: 100px;
+    width: 100px;
+    background-color: black;
+    border: blueviolet 1px solid;
+    margin-right: 10px;
+}
+
+p{
+    font-family: 'IM Fell French Canon SC', serif;
+    color: white;
+    font-size: 20px;
+}
+
+#randomNumberDisplay{
+    font-size: 40px;
+    color: yellow;
+    background-color: black;
+    border: 1px solid blueviolet;
+    height: 100px;
+    width: 150px;
+    margin-left: 45%;
+    text-align: center;
+}
+
+#message{
+    font-family: 'IM Fell French Canon SC', serif;
+    font-size: 20px;
+    color: aqua;
+    /* text-align: center; */
+    margin-left: 20%;
+    width: 250px;
+}
+
+#scoreDisplay{
+    font-family: 'IM Fell French Canon SC', serif;
+    font-size: 20px;
+    margin-top: 50px;
+    height: 80px;
+    width: 200px;
+    margin-left: 45%;
+}
+
+.label{
+    background-color: blueviolet;
+    font-family: 'IM Fell French Canon SC', serif;
+    font-size: 20px;
+    width: 250px;
+    text-align: center;
+    margin-left: 43%;
+}
+
+
+#currentTotalDisplay{
+    font-size: 36px;
+    color: yellow;
+    background-color: black;
+    border: 1px solid blueviolet;
+    height: 100px;
+    width: 150px;
+    margin-left: 45%;
+    text-align: center;
+}
+
+.gemSection{
+    margin-top: 50px;
+    margin-left: 38%;
+}
+#greenGem{
+    background: url(../images/greenGem.png);
+}
+#blueGem{
+    background: url(../images/blueGem.png);
+}
+#redGem{
+    background: url(../images/redGem.png);
+}
+#yellowGem{
+    background: url(../images/yellowGem.png);
+}
