@@ -34,12 +34,13 @@ $(document).keyup(function(e){
                 $("#win-count").text(Wins);
                 SetGame();
             }
-            if(sum > randomNumber)
+            if((sum > randomNumber) && (continueGame === true))
             {
                 $("#message").text("You Lost!");
                 Losses++;
                 $("#loss-count").text(Losses);
                 continueGame = false;
+                SetGame();
             }
         })
 
@@ -58,12 +59,13 @@ $(document).keyup(function(e){
             $("#win-count").text(Wins);
             SetGame();
         }
-        if(sum > randomNumber)
+        if((sum > randomNumber) && (continueGame === true))
         {
             $("#message").text("You Lost!");
             Losses++;
             $("#loss-count").text(Losses);
             continueGame = false;
+            SetGame();
         }
        })
 
@@ -82,12 +84,13 @@ $(document).keyup(function(e){
             $("#win-count").text(Wins);
             SetGame();
         }
-        if(sum > randomNumber)
+        if((sum > randomNumber) && (continueGame === true))
         {
             $("#message").text("You Lost!");
             Losses++;
             $("#loss-count").text(Losses);
             continueGame = false;
+            SetGame();
         }
        })
 
@@ -106,12 +109,13 @@ $(document).keyup(function(e){
             $("#win-count").text(Wins);
             SetGame();
         }
-        if(sum > randomNumber)
+        if((sum > randomNumber) && (continueGame === true))
         {
             $("#message").text("You Lost!");
             Losses++;
             $("#loss-count").text(Losses);
             continueGame = false;
+            SetGame();
         }
        })
 
@@ -137,7 +141,6 @@ function SetGame()
 
     //Generate a random number for user
     randomNumber = GenerateRandomInt(19,120);
-    console.log(randomNumber);
     $("#randomNumberDisplay").text(randomNumber);
 
     //Generate random number for each of the gem
