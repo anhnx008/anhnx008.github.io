@@ -39,7 +39,7 @@ p{
 }
 
 #message{
-    font-family: 'IM Fell French Canon SC', serif;
+    font-family: 'Times New Roman', Times, serif;
     font-size: 20px;
     color: aqua;
     /* text-align: center; */
@@ -54,6 +54,10 @@ p{
     height: 80px;
     width: 200px;
     margin-left: 45%;
+}
+
+span{
+    font-family: 'Times New Roman', Times, serif;
 }
 
 .label{
