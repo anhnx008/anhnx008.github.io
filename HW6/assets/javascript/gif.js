@@ -11,8 +11,6 @@ var limitParam = "&limit=10"; //number of records to return (10)
 var apiKey = "&api_key=dc6zaTOxFJmzC";
 var queryURL = "";
 
-console.log("Starting");
-
 //Loop through the array and make button for each item in the array
 function renderButton() 
 {
@@ -40,7 +38,6 @@ event.preventDefault();
 //When the submit button is click, push the new item user entered into the array
 newAnimal = $("#userInput").val().trim();
 topics.push(newAnimal);
-console.log(newAnimal);
 renderButton();
 })
 
@@ -49,7 +46,6 @@ $("body").on("click", ".animal-button", function(){
 
    var animal = $(this).attr("data-buttonName");
    queryURL = baseURL + queryParam + animal + limitParam + apiKey;
-   console.log(queryURL);
 
    $.ajax({
        url: queryURL,
@@ -57,8 +53,6 @@ $("body").on("click", ".animal-button", function(){
    }).then(function(response){
      
     var result = response.data;
-    // console.log(result);
-    console.log(result.length);
 
     //Clear existing images first
     $("#gifs-display").text("");
@@ -67,7 +61,6 @@ $("body").on("click", ".animal-button", function(){
     {
         //Get the rating, url for still image and gif 
         var rating = result[i].rating;
-        console.log(rating);
         var imgSrcAnimate = result[i].images.fixed_height.url;
         var imgSrcStill = result[i].images.fixed_height_still.url; 
 
@@ -89,9 +82,6 @@ $("body").on("click", ".animal-button", function(){
         newGifDiv.append(newP);
         newGifDiv.append(newImgDiv);
         $("#gifs-display").append(newGifDiv);
-
-        // $("#gifs-display").append(newP);
-        // $("#gifs-display").append(newImgDiv);
     }
    })
 
@@ -100,10 +90,8 @@ $("body").on("click", ".animal-button", function(){
 //Click event when user click on image
 $("body").on("click", ".gif", function(){
 
-console.log("CLICKED IMAGE");
 //Get the data-state attribute of the image
 var state = $(this).attr("data-state");
-console.log(state);
 
 if (state === "still"){
     $(this).attr("src", $(this).attr("data-animate"));
