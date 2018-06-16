@@ -13,21 +13,28 @@ body{
 .animal-button:hover{
     box-shadow: 2px 2px;
 }
-
-form{
+#right-side-display{
+    width: 20%;
     float: right;
+}
+
+#left-side-display{
+    width: 60%;
+    float: left;
     margin-left: 5px;
 }
 
-#gifs-display{
-    width: 85%;
-    border: solid yellow solid;
+label{
+    color: yellow;
 }
 
 p{
     color: yellow;
 }
 
-.gif{
+.gif-container{
     float: left;
+    margin-left: 20px;
+    margin-bottom: 30px;
 }
+

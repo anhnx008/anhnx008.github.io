@@ -70,14 +70,14 @@ $("body").on("click", ".animal-button", function(){
         console.log(rating);
         var imgSrcAnimate = result[i].images.fixed_height.url;
         var imgSrcStill = result[i].images.fixed_height_still.url; 
-        // console.log(imgSrcAnimate);
-        // console.log(imgSrcStill);
 
         //Create new <img> and <p> elements
         var newImgDiv = $("<img>");
         var newP = $("<p>");
+        var newGifDiv = $("<div>");
 
-        //Add class and attributes to the image element
+        //Add class and attributes to the image 
+        newGifDiv.addClass("gif-container");
         newImgDiv.addClass("gif");
         newImgDiv.attr("src", imgSrcStill);
         newImgDiv.attr("data-still", imgSrcStill);
@@ -85,9 +85,13 @@ $("body").on("click", ".animal-button", function(){
         newImgDiv.attr("data-state", "still");
 
         //Append to html
-        newP.text("Rating: " + rating);
-        $("#gifs-display").append(newP);
-        $("#gifs-display").append(newImgDiv);
+        newP.html("<p>Rating: " + rating + "</p><br>");
+        newGifDiv.append(newP);
+        newGifDiv.append(newImgDiv);
+        $("#gifs-display").append(newGifDiv);
+
+        // $("#gifs-display").append(newP);
+        // $("#gifs-display").append(newImgDiv);
     }
    })
 
