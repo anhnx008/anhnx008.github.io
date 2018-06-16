@@ -1,0 +1,40 @@
+body{
+    background-color: black;
+}
+
+.animal-button{
+    background-color: black;
+    color: yellow;
+    text-align: center;
+    padding: 5px 10px 5px 10px;
+    margin-left: 10px;
+}
+
+.animal-button:hover{
+    box-shadow: 2px 2px;
+}
+#right-side-display{
+    width: 20%;
+    float: right;
+}
+
+#left-side-display{
+    width: 60%;
+    float: left;
+    margin-left: 5px;
+}
+
+label{
+    color: yellow;
+}
+
+p{
+    color: yellow;
+}
+
+.gif-container{
+    float: left;
+    margin-left: 20px;
+    margin-bottom: 30px;
+}
+
