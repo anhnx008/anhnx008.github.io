@@ -1,3 +1,29 @@
+body{
+    background-color: black;
+}
+
 .animal-button{
-    background-color: yellow;
+    background-color: black;
+    color: yellow;
+    text-align: center;
+    padding: 5px 10px 5px 10px;
+    margin-left: 10px;
+}
+
+.animal-button:hover{
+    box-shadow: 2px 2px;
+}
+
+form{
+    float: right;
+    margin-left: 5px;
+}
+
+#gifs-display{
+    width: 85%;
+    border: solid yellow solid;
+}
+
+p{
+    color: yellow;
 }
