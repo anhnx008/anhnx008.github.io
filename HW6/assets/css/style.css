@@ -27,3 +27,7 @@ form{
 p{
     color: yellow;
 }
+
+.gif{
+    float: left;
+}

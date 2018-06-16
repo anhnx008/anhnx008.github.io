@@ -45,7 +45,7 @@ renderButton();
 })
 
 //Click event for each animal button. Make an ajax call to the api
-$(".animal-button").on("click", function(){
+$("body").on("click", ".animal-button", function(){
 
    var animal = $(this).attr("data-buttonName");
    queryURL = baseURL + queryParam + animal + limitParam + apiKey;
@@ -59,6 +59,9 @@ $(".animal-button").on("click", function(){
     var result = response.data;
     // console.log(result);
     console.log(result.length);
+
+    //Clear existing images first
+    $("#gifs-display").text("");
 
     for(i = 0; i < result.length; i++)
     {
