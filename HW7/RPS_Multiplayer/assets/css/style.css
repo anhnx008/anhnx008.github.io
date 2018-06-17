@@ -1,0 +1,146 @@
+h1{
+    color: black;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 340px;
+    text-align: center;
+}
+
+h2{
+    color: #5c4033;
+    font-family: 'Cabin Sketch', cursive;
+    font-size: 180px;
+    text-align: center;
+    margin-bottom: 100px;
+}
+
+.player-display{
+    border: 2px dashed #5c4033;
+    margin-top: 40px;
+    height: 900px;
+    width: 30%;
+}
+
+/* Player 1 section */
+#player1{     
+    float: left;
+    margin-left: 180px;
+}
+
+#rockBtn1{
+    margin-left: 14%;
+    background: url("../images/rock.png");
+    border-radius: 240px 20px 325px 15px/15px 325px 20px 240px;
+}
+
+#paperBtn1{
+    background: url("../images/paper.png");
+    border-radius: 155px 45px 225px 15px/15px 225px 45px 155px;  
+}
+
+#scissorBtn1{
+    background: url("../images/scissor.png");
+    border-radius: 255px 15px 225px 15px/15px 225px 15px 255px;
+}
+
+.player1Btn{
+    width:371px;
+    height: 450px;
+    border:dotted 5px #41403E;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    margin-right: 5%;
+}
+
+.player1Btn:hover{
+    box-shadow:6px 12px 8px -10px rgba(31, 31, 31, 0.3);
+    transform: skew(8deg) rotate(3deg);  
+}
+
+/* Player 2 */
+#player2{
+    float: left;
+    margin-right: 180px;
+}
+
+#rockBtn2{
+    margin-left: 14%;
+    background: url("../images/rock.png");
+    border-radius: 240px 20px 325px 15px/15px 325px 20px 240px;
+}
+
+#paperBtn2{
+    background: url("../images/paper.png");
+    border-radius: 155px 45px 225px 15px/15px 225px 45px 155px;  
+}
+
+#scissorBtn2{
+    background: url("../images/scissor.png");
+    border-radius: 255px 15px 155px 15px/15px 100px 15px 255px;
+}
+
+.player2Btn{
+    width:371px;
+    height: 450px;
+    border:dotted 5px #41403E;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    margin-right: 5%;
+}
+
+.player2Btn:hover{
+    box-shadow:6px 12px 8px -10px rgba(31, 31, 31, 0.3);
+    transform: skew(-8deg) rotate(-3deg);  
+}
+
+#announcement-display{
+    text-align: center;
+    font-size: 250px;
+    font-family: 'Londrina Sketch', cursive;
+    width: 30%;
+    color: black;
+    float: left;
+    margin-top: 5%;
+}
+
+/* Chat display */
+.chat-section{
+    clear: both;
+    margin-top: 18%;
+    width: 40%;
+    border: 2px dashed #5c4033;
+    height: 1200px;
+    margin-left: 28%;
+}
+
+#input-message{
+    width: 40%;
+    margin-left: 28%;
+    height: 120px;
+    font-size: 80px;
+    background-color: transparent;
+    font-family: 'Annie Use Your Telescope', cursive;
+    border-radius: 40px 40px 40px 40px;
+    font-weight: 500;
+    outline: none;
+}
+
+.score{
+    font-size: 80px;
+    margin-top: 60px;
+    text-align: center;
+}
+
+#sendBtn{
+    width: 40%;
+    text-align: center;
+    font-size: 100px;
+    background-color: #B29772;
+    border-radius: 40px 40px 40px 40px;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border: dashed 4px #41403E;
+    margin-left: 28%;
+    font-family: 'Cabin Sketch', cursive;
+}
+
+#sendBtn:hover{
+    transition: box-shadow 600ms ease-out, left 200ms, right 200ms;
+	box-shadow: 0 15px 15px rgba(31, 31, 31, 0.5);
+}

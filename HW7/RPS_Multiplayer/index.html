@@ -1,0 +1,66 @@
+<!DOCTYPE>
+<html lang="en-us">
+
+<head>
+    <title>RSP Multiplayer</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Link to external css -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css">
+
+    <!-- Fonts Link -->
+    <link href="https://fonts.googleapis.com/css?family=Cabin+Sketch" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Londrina+Sketch" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Annie+Use+Your+Telescope" rel="stylesheet">
+
+    <!-- jQuery and Firebase-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/5.0.4/firebase.js"></script>
+
+</head>
+
+<body background="assets/images/background_paper.png">
+    <h1>Rock Paper Scissor</h1>>
+    <br>
+
+    <div class="player-display " id="player1">
+        <h2>Waiting for player 1</h2>
+        <button id="rockBtn1" class="player1Btn"></button>
+        <button id="paperBtn1" class="player1Btn"></button>
+        <button id="scissorBtn1" class="player1Btn"></button>
+        <pre><p class="score">Wins: <span id="win-count1"></span>    Losses: <span id="loss-count1"></span></p></pre>
+    </div>
+
+    <div class="announcement-div">
+        <span id="announcement-display">Anh Wins!</span>
+    </div>
+
+    <div class="player-display" id="player2">
+        <h2>Waiting for player 2</h2>
+        <br>
+        <button id="rockBtn2" class="player2Btn"></button>
+        <button id="paperBtn2" class="player2Btn"></button>
+        <button id="scissorBtn2" class="player2Btn"></button>
+        <pre><p class="score">Wins: <span id="win-count2"></span>    Losses: <span id="loss-count2"></span></p></pre>
+    </div>
+
+    <div class="chat-section">
+        <ul id="messages" class="chatText">
+        </ul>
+    </div>
+    <br><br>
+
+    <input type="text" id="input-message" name="message" placeholder="your message..." autofocus>
+    <br><br>
+    <button id="sendBtn" type="submit">Send</button>
+
+
+    </div>
+
+    <!-- Javascript -->
+    <script src="assets/javascript/game.js"></script>
+</body>
+
+</html>
