@@ -1,21 +1,49 @@
+body{
+    min-height: 1200px;
+}
+
 h1{
     color: black;
     font-family: 'Cabin Sketch', cursive;
-    font-size: 340px;
+    font-size: 300px;
     text-align: center;
 }
 
 h2{
     color: #5c4033;
     font-family: 'Cabin Sketch', cursive;
-    font-size: 180px;
+    font-size: 150px;
     text-align: center;
     margin-bottom: 100px;
 }
 
+/* Start */
+#name-input{
+    width: 15%;
+    height: 120px;
+    font-size: 80px;
+    background-color: transparent;
+    font-family: 'Annie Use Your Telescope', cursive;
+    border-radius: 40px 40px 40px 40px;
+    font-weight: 600;
+    outline: none;
+    margin-left: 40%;
+}
+
+#startBtn{
+    width: 5%;
+    text-align: center;
+    font-size: 100px;
+    background-color: #B29772;
+    border-radius: 40px 40px 40px 40px;
+    box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
+    border: dashed 4px #41403E;
+    font-family: 'Cabin Sketch', cursive;
+}
+
 .player-display{
     border: 2px dashed #5c4033;
-    margin-top: 40px;
+    margin-top: 200px;
     height: 900px;
     width: 30%;
 }
@@ -23,7 +51,7 @@ h2{
 /* Player 1 section */
 #player1{     
     float: left;
-    margin-left: 180px;
+    margin-left: 5%;
 }
 
 #rockBtn1{
@@ -90,6 +118,12 @@ h2{
     transform: skew(-8deg) rotate(-3deg);  
 }
 
+.score{
+    font-size: 80px;
+    margin-top: 60px;
+    text-align: center;
+}
+
 #announcement-display{
     text-align: center;
     font-size: 250px;
@@ -97,22 +131,22 @@ h2{
     width: 30%;
     color: black;
     float: left;
-    margin-top: 5%;
+    margin-top: 8%;
 }
 
 /* Chat display */
 .chat-section{
     clear: both;
-    margin-top: 18%;
-    width: 40%;
+    margin-top: 21%;
+    width: 50%;
     border: 2px dashed #5c4033;
-    height: 1200px;
-    margin-left: 28%;
+    height: 1000px;
+    margin-left: 24%;
 }
 
 #input-message{
-    width: 40%;
-    margin-left: 28%;
+    width: 50%;
+    margin-left: 24%;
     height: 120px;
     font-size: 80px;
     background-color: transparent;
@@ -122,21 +156,15 @@ h2{
     outline: none;
 }
 
-.score{
-    font-size: 80px;
-    margin-top: 60px;
-    text-align: center;
-}
-
 #sendBtn{
-    width: 40%;
+    width: 50%;
     text-align: center;
     font-size: 100px;
     background-color: #B29772;
     border-radius: 40px 40px 40px 40px;
     box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.2);
     border: dashed 4px #41403E;
-    margin-left: 28%;
+    margin-left: 24%;
     font-family: 'Cabin Sketch', cursive;
 }
 
