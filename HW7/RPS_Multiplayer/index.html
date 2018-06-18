@@ -22,15 +22,15 @@
 </head>
 
 <body background="assets/images/background_paper.png">
-    <h1>Rock Paper Scissor</h1>>
-    <br><br>
+    <h1>Rock Paper Scissor</h1>
+    <br><br><br>
 
     <input type="text" id="name-input" name="playerName" placeholder="Enter your name..." autofocus>
     <button id="startBtn">Start</button>
     <br>
 
     <div class="player-display " id="player1">
-        <h2>Waiting for player 1</h2>
+        <h2 id="player1Name">Waiting for player 1</h2>
         <button id="rockBtn1" class="player1Btn"></button>
         <button id="paperBtn1" class="player1Btn"></button>
         <button id="scissorBtn1" class="player1Btn"></button>
@@ -42,7 +42,7 @@
     </div>
 
     <div class="player-display" id="player2">
-        <h2>Waiting for player 2</h2>
+        <h2 id="player2Name">Waiting for player 2</h2>
         <br>
         <button id="rockBtn2" class="player2Btn"></button>
         <button id="paperBtn2" class="player2Btn"></button>
