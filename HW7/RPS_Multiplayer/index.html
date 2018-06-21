@@ -26,7 +26,7 @@
     <br><br><br>
 
     <input type="text" id="name-input" name="playerName" placeholder="Enter your name..." autofocus>
-    <button id="startBtn">Start</button>
+    <button id="playBtn" player="player1">Play</button>
     <br>
 
     <div class="player-display " id="player1">
@@ -34,11 +34,11 @@
         <button id="rockBtn1" class="player1Btn"></button>
         <button id="paperBtn1" class="player1Btn"></button>
         <button id="scissorBtn1" class="player1Btn"></button>
-        <pre><p class="score">Wins: <span id="win-count1"></span>    Losses: <span id="loss-count1"></span></p></pre>
+        <pre><p class="score" id="p1Score">Wins: <span id="win-count1"></span>      Losses: <span id="loss-count1"></span></p></pre>
     </div>
 
     <div class="announcement-div">
-        <span id="announcement-display">Anh Wins!</span>
+        <span id="announcement-display"></span>
     </div>
 
     <div class="player-display" id="player2">
@@ -47,18 +47,18 @@
         <button id="rockBtn2" class="player2Btn"></button>
         <button id="paperBtn2" class="player2Btn"></button>
         <button id="scissorBtn2" class="player2Btn"></button>
-        <pre><p class="score">Wins: <span id="win-count2"></span>    Losses: <span id="loss-count2"></span></p></pre>
+        <pre><p class="score" id="p2Score">Wins: <span id="win-count2"></span>      Losses: <span id="loss-count2"></span></p></pre>
     </div>
 
     <div class="chat-section">
-        <ul id="messages" class="chatText">
+        <ul id="messages" class="chatText" style="list-style-type:none">
         </ul>
     </div>
     <br><br>
 
-    <input type="text" id="input-message" name="message" placeholder="your message..." autofocus>
+    <input type="text" id="input-message" name="message" placeholder=" Your message..." autofocus>
     <br><br>
-    <button id="sendBtn" type="submit">Send</button>
+    <button id="sendBtn" type="submit">Send chat</button>
 
 
     </div>
