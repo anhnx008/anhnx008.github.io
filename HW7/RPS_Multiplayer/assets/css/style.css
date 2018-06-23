@@ -185,7 +185,7 @@ h2{
 
 .p1Sender{
     font-size: 80px;
-    border: 4px yellow dashed;
+    border: 4px blueviolet dashed;
     font-family: 'Cabin Sketch', cursive;
     border-radius: 20px 20px 20px 20px;
     box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.5);
@@ -205,7 +205,7 @@ h2{
 
 .nonPlayerSender{
     font-size: 80px;
-    border: 4px blueviolet dashed;
+    border: 4px yellow dashed;
     font-family: 'Cabin Sketch', cursive;
     border-radius: 20px 20px 20px 20px;
     box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.5);
