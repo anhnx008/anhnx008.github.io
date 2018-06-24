@@ -58,14 +58,15 @@ $(document).ready(function () {
             $("#playBtn").hide();
             $("#name-input").hide();
         }
-        else {
+        else if(whoamI === ""){
             $("#playBtn").hide();
             $("#name-input").hide();
         }
 
     }
 
-    function determineWinner(choice1, choice2){
+    function determineWinner(choice1, choice2)
+    {
         
         if ((choice1 === choice2) || (choice1 === choice2) || (choice1 === choice2)) 
         {
@@ -92,6 +93,25 @@ $(document).ready(function () {
         database.ref().update({
             playerTurn: playerTurn
         })
+
+    }
+
+    function displaySelection(selection , playerNum){
+       
+        if(selection === "r"){
+            $("#paperBtn" + playerNum).hide();
+            $("#scissorBtn" + playerNum).hide();
+        }
+        if (selection === "p")
+        {
+            $("#rockBtn" + playerNum).hide();
+            $("#scissorBtn" + playerNum).hide();
+        }
+        if (selection === "s")
+        {
+            $("#paperBtn" + playerNum).hide();
+            $("#rockBtn" + playerNum).hide();
+        }
 
     }
     //*****End Helper Method Section**************
@@ -145,8 +165,18 @@ $(document).ready(function () {
         }
     });
 
-    //Ongoing - listening to database's changes
-    database.ref().on("value", function (snapshot) {
+    //***********************ONGOING - LISTENING TO CHANGE IN DATABASE*********************
+    database.ref().on("value", function(snapshot) {
+
+        if(snapshot.val().playerTurn !== undefined) {
+    		playerTurn = snapshot.val().playerTurn;
+    	}
+    	// If the database doesn't know whose turn it is, create it
+    	else {
+    		database.ref().update({
+    			playerTurn: 1
+    		});
+    	}
 
         //If player 1 has entered a name then show their name and score
         if (snapshot.val().p1Name !== undefined) {
@@ -165,20 +195,21 @@ $(document).ready(function () {
         }
 
         //If both players have entered their name then begin game
-        if ((snapshot.val().p1Name !== undefined) && (snapshot.val().p2Name !== undefined)) {
+        if ((snapshot.val().p1Name !== undefined) && (snapshot.val().p2Name !== undefined)) 
+        {
             
             //And it is player 1's turn
             if (snapshot.val().playerTurn === 1) 
             {
-                if (whoamI === "player1") {
+                if (whoamI === "player1") 
+                {
                     $(".player1Btn").show();
-                    $("#announcement-display").text("Select your choice");
-                    console.log(snapshot.val().playerTurn);
-                    console.log(whoamI);
+                    $("#announcement-display").text("Make your choice");
                 }
 
-                else {
-                    $("#announcement-display").text("Waiting for player 1 to choose");
+                else 
+                {
+                    $("#announcement-display").text("Waiting for player 1 to choose...");
                     $(".player1Btn").hide();
                     $(".player2Btn").hide();
                 }
@@ -190,78 +221,96 @@ $(document).ready(function () {
                 if (whoamI === "player2") 
                 {
                     $(".player2Btn").show();
-                    $("#announcement-display").text("Select your choice");
+                    $("#announcement-display").text("Make your choice");
                 }
             
-                else {
-                    $("#announcement-display").text("Waiting for player 2 to choose");
+                else 
+                {
+                    $("#announcement-display").text("Waiting for player 2 to choose...");
                     $(".player1Btn").hide();
                     $(".player2Btn").hide();
                 }
             }
 
+            //This means that both players have already made their selections
             else if(snapshot.val().playerTurn === 0)
             {
-                //This means that both players have already picked
                 player1.rpsSelection = snapshot.val().p1choice;
                 player2.rpsSelection = snapshot.val().p2choice;
 
-                var winner = determineWinner(p1Choice, p2choice);
+                var winner = determineWinner(player1.rpsSelection, player2.rpsSelection);
 
-                if(winner === "player1"){
+                if(winner === "player1")
+                {
                     player1.win = snapshot.val().p1Wins;
+                    player1.name = snapshot.val().p1Name;
                     player1.win++;
                     player2.loss = snapshot.val().p2Losses;
                     player2.loss++;
+                    playerTurn = 3;
+
+                    $("#announcement-display").text(player1.name + " is the winner in this round!");            
 
                     database.ref().update({
                         p1Wins: player1.win,
                         p2Losses: player2.loss,
+                        playerTurn: playerTurn
                     })
                 }
 
                 else if(winner === "player2")
                 {
                     player2.win = snapshot.val().p2Wins;
+                    player2.name = snapshot.val().p2Name;
                     player2.win++;
                     player1.loss = snapshot.val().p1Losses;
                     player1.loss++;
+                    playerTurn = 3; //This is to temporarily prevent the program from continuously execute the condition where playerTurn equals to 0
+
+                    $("#announcement-display").text(player2.name + " is the winner in this round!");
 
                     database.ref().update({
                         p2Wins: player2.win,
                         p1Losses: player1.loss,
+                        playerTurn: playerTurn
                     })
                 }
                 else if(winner === "tie")
                 {
                     $("#announcement-display").text("It's a tie!");
                 }
-
                 setTimeout(resetTurn, 4000);
-            }
+            }              
         }
-
+        
         //If NO players defined in database then new user will be player 1
-        if ((whoamI === "") && (snapshot.val().p1Name === undefined)) {
+        if ((whoamI === "") && (snapshot.val().p1Name === undefined)) 
+        {
             //Set the "player" attribute of the Play button to player 1
             $("#playBtn").attr("player", "player1")
         }
         // If player 1 exists the new user will be player 2
-        else if (whoamI === "" && (snapshot.val().p2Name === undefined)) {
+        else if (whoamI === "" && (snapshot.val().p2Name === undefined)) 
+        {
             //Set the "player" attribute of the Play button to player2
             $("#playBtn").attr("player", "player2")
         }
         //If both spots are taken then anyone joining is a spectator
-        else if (whoamI === "") {
+        else if (whoamI === "") 
+        {
             $("#announcement-display").text("There is currently no available spot. But stay and watch!");
+            $("#playBtn").hide();
+            $("#name-input").hide();
         }
 
     }, function(errorObject) {
         console.log("Error handled " + errorObject.code);
     });
 
-    //Listen to the click event for the 3 options from player 1
-    $(document).on("click", ".player1Btn", function(){
+
+
+    //Listen to the click event for ROCK, PAPER, SCISSOR BUTTONS
+    $(".player1Btn , .player2Btn").on("click", function(){
 
         var selection = $(this).attr("data-value");
 
@@ -277,16 +326,13 @@ $(document).ready(function () {
 
             //After player 1 has made the selection then hide the rsp options
             $(".playerBtn1").hide();
+            displaySelection(selection, "1");
+
         }
-    });
 
-    $(document).on("click", ".player2Btn", function(){
-
-        var selection = $(this).attr("data-value");
-
-        if(playerTurn === 2)
+        else if(playerTurn === 2)
         {
-            playerTurn = 0; //This stand for both player have already picked their choices
+            playerTurn = 0; 
 
             //Push to database
             database.ref().update({
@@ -296,12 +342,11 @@ $(document).ready(function () {
 
             //After player 2 has made the selection then hide the rsp options
             $(".playerBtn2").hide();
-        }
+            displaySelection(selection, "2");
+        }     
     });
 
-
-    })
-
+       //******************CHAT FUNCTIONALITY*************************************** */
     //Listening to SEND CHAT button's click event
     $("#sendBtn").on("click", function (event) {
         event.preventDefault();
@@ -329,15 +374,15 @@ $(document).ready(function () {
 
         //Clear the input message box
         $("#input-message").val("");
-    })
+    });
 
-    //Listen for any new changes in the chat database, get and display in chat
+    //ONGOING - Listening for any new changes in the chat database, get and display in chat
     chatData.on("child_added", function (chatSnapshot) {
         var chatMsg = chatSnapshot.val().chatMsg;
         var senderName = chatSnapshot.val().senderName;
         var isPlayer = chatSnapshot.val().isPlayer;
         var newLi = $("<li>");
-        console.log('new li is: ', newLi)
+
         if (isPlayer === "player1") {
             newLi.addClass("p1Sender");
             newLi.text(senderName + ": " + chatMsg + "\r\n");
@@ -353,9 +398,30 @@ $(document).ready(function () {
             newLi.text(senderName + ": " + chatMsg + "\r\n");
             $("#messages").append(newLi);
         }
-    })
-});
+    });
 
+    // // When the user closes the window or tab
+	// $(window).unload(function(){
+	// 	// If the player is p1, reset the p1 DB values
+	// 	if(whoAmI === "player1") {
+	// 		database.ref().update({
+	// 			p1Name: null,
+	// 			p1Wins: 0,
+	// 			p1Losses: 0
+	// 		});
 
+	// 	}
+	// 	// If the player is p2, reset the p2 DB values
+	// 	else if(whoAmI === "player2") {
+	// 		database.ref().update({
+	// 			p2Name: null,
+	// 			p2Wins: 0,
+	// 			p2Losses: 0
+	// 		});
+	// 	}
+	// });
+})
+
+ 
 
 
