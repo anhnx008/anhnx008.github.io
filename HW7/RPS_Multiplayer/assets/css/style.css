@@ -87,8 +87,10 @@ h2{
     transform: skew(8deg) rotate(3deg);  
 }
 
-.player1Btn:target{
+.player1Btn:focus{
     border: solid 4px teal;
+    outline: none;
+    transform: none;
 }
 
 /* Player 2 */
@@ -126,8 +128,10 @@ h2{
     transform: skew(-8deg) rotate(-3deg);  
 }
 
-.player2Btn:target{
+.player2Btn:focus{
     border: solid 4px teal;
+    outline: none;
+    transform: none;
 }
 
 .score{
@@ -206,6 +210,7 @@ h2{
     box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.5);
     margin: 10px 0;
     display: table;
+    padding: 4px;
 }
 
 .p2Sender{
@@ -216,6 +221,7 @@ h2{
     box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.5);
     margin: 10px 0;
     display: table;
+    padding: 4px;
 }
 
 .nonPlayerSender{
@@ -226,4 +232,5 @@ h2{
     box-shadow: 20px 38px 34px -26px hsla(0,0%,0%,.5);
     margin: 10px 0;
     display: table;
+    padding: 4px;
 }

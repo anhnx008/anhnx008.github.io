@@ -12,8 +12,10 @@ $(document).ready(function () {
     firebase.initializeApp(config);
 
     //Global variables
-    var database = firebase.database();
-    var chatData = database.ref("chatData");
+    var database = firebase.database().ref("PlayerInfo");
+    var chatData = firebase.database().ref("chatData");
+
+    var chatMsgChild = chatData.child("chatData/chatMsg");
 
     var player1 = {
         name: "",
@@ -40,20 +42,21 @@ $(document).ready(function () {
 
     //Hide choices and stats
     function initialScreen() {
-        $(".player1Btn").hide();
-        $(".player2Btn").hide();
-        $(".score").hide();
+        $(".player1Btn").css("visibility","hidden");
+        $(".player2Btn").css("visibility","hidden");
+        $(".score").css("visibility","hidden");
     }
 
-    //Display welcome message and let user knows which player they are
+    //Display welcome message and let user knows which player they are. Hide the input name field and the play button once they have entered their name
     function welcomePlayer() {
         if (whoamI === "player1") {
+            $("#p1Score").css("visibility","visible");
             $("#announcement-display").text("Hi " + player1.name + " ! " + "You are player 1.");
             $("#playBtn").hide();
             $("#name-input").hide();
         }
         else if (whoamI === "player2") {
-            $("#p2Score").show();
+            $("#p2Score").css("visibility","visible");
             $("#announcement-display").text("Hi " + player2.name + " ! " + "You are player 2.");
             $("#playBtn").hide();
             $("#name-input").hide();
@@ -66,8 +69,7 @@ $(document).ready(function () {
     }
 
     function determineWinner(choice1, choice2)
-    {
-        
+    {      
         if ((choice1 === choice2) || (choice1 === choice2) || (choice1 === choice2)) 
         {
             //A draw
@@ -90,31 +92,36 @@ $(document).ready(function () {
 
         $("#announcement-display").text("");
 
-        database.ref().update({
+        database.update({
             playerTurn: playerTurn
         })
 
     }
 
-    function displaySelection(selection , playerNum){
-       
+    function displaySelection(selection , playerNum)
+    {     
         if(selection === "r"){
-            $("#paperBtn" + playerNum).hide();
-            $("#scissorBtn" + playerNum).hide();
+            $("#rockBtn" + playerNum).css("visibility", "visible");
+            $("#paperBtn" + playerNum).css("visibility", "hidden");
+            $("#scissorBtn" + playerNum).css("visibility", "hidden");
         }
         if (selection === "p")
         {
-            $("#rockBtn" + playerNum).hide();
-            $("#scissorBtn" + playerNum).hide();
+            $("#paperBtn" + playerNum).css("visibility", "visible");
+            $("#rockBtn" + playerNum).css("visibility", "hidden");
+            $("#scissorBtn" + playerNum).css("visibility", "hidden");
         }
         if (selection === "s")
         {
-            $("#paperBtn" + playerNum).hide();
-            $("#rockBtn" + playerNum).hide();
+            $("#scissorBtn" + playerNum).css("visibility", "visible");
+            $("#paperBtn" + playerNum).css("visibility", "hidden");
+            $("#rockBtn" + playerNum).css("visibility", "hidden");
         }
 
     }
     //*****End Helper Method Section**************
+
+
 
 
 
@@ -123,7 +130,7 @@ $(document).ready(function () {
     //Hide all the choices and score stats at the begining 
     initialScreen();
 
-    //Listening to for PLAY BUTTON's click event - grab user's name from name input box
+    //Listening to for PLAY BUTTON's click event - grab user's name from name input field
     $("#playBtn").on("click", function (event) {
         event.preventDefault();
 
@@ -140,7 +147,7 @@ $(document).ready(function () {
                 player1.name = nameFromInputField.val().trim();
 
                 //Update firebase database with player 1's info
-                database.ref().update({
+                database.update({
                     p1Name: player1.name,
                     p1Wins: player1.win,
                     p1Losses: player1.loss,
@@ -153,7 +160,7 @@ $(document).ready(function () {
                 player2.name = nameFromInputField.val().trim();
 
                 //Update firebase database with player 2's info
-                database.ref().update({
+                database.update({
                     p2Name: player2.name,
                     p2Wins: player2.win,
                     p2Losses: player2.loss,
@@ -166,21 +173,21 @@ $(document).ready(function () {
     });
 
     //***********************ONGOING - LISTENING TO CHANGE IN DATABASE*********************
-    database.ref().on("value", function(snapshot) {
+    database.on("value", function(snapshot) {
 
         if(snapshot.val().playerTurn !== undefined) {
     		playerTurn = snapshot.val().playerTurn;
     	}
     	// If the database doesn't know whose turn it is, create it
     	else {
-    		database.ref().update({
+    		database.update({
     			playerTurn: 1
     		});
     	}
 
         //If player 1 has entered a name then show their name and score
         if (snapshot.val().p1Name !== undefined) {
-            $("#p1Score").show();
+            $("#p1Score").css("visibility", "visible");
             $("#player1Name").text(snapshot.val().p1Name);
             $("#win-count1").text(snapshot.val().p1Wins);
             $("#loss-count1").text(snapshot.val().p1Losses);
@@ -188,7 +195,7 @@ $(document).ready(function () {
 
         //If player 2 has entered a name then show their name and score
         if (snapshot.val().p2Name !== undefined) {
-            $("#p2Score").show();
+            $("#p2Score").css("visibility", "visible");
             $("#player2Name").text(snapshot.val().p2Name);
             $("#win-count2").text(snapshot.val().p2Wins);
             $("#loss-count2").text(snapshot.val().p2Losses);
@@ -203,15 +210,14 @@ $(document).ready(function () {
             {
                 if (whoamI === "player1") 
                 {
-                    $(".player1Btn").show();
-                    $("#announcement-display").text("Make your choice");
+                    $(".player1Btn").css("visibility", "visible");
+                    $("#announcement-display").text(snapshot.val().p1Name + ", it is your turn. Please make your selection");
                 }
 
                 else 
                 {
                     $("#announcement-display").text("Waiting for player 1 to choose...");
-                    $(".player1Btn").hide();
-                    $(".player2Btn").hide();
+                    $(".player2Btn").css("visibility", "hidden");
                 }
             }
 
@@ -220,15 +226,14 @@ $(document).ready(function () {
             {
                 if (whoamI === "player2") 
                 {
-                    $(".player2Btn").show();
-                    $("#announcement-display").text("Make your choice");
+                    $(".player2Btn").css("visibility", "visible");
+                    $("#announcement-display").text(snapshot.val().p2Name + ", it is your turn. Please make your selection");
                 }
             
                 else 
                 {
                     $("#announcement-display").text("Waiting for player 2 to choose...");
-                    $(".player1Btn").hide();
-                    $(".player2Btn").hide();
+                    $(".player1Btn").css("visibility", "hidden");
                 }
             }
 
@@ -237,6 +242,7 @@ $(document).ready(function () {
             {
                 player1.rpsSelection = snapshot.val().p1choice;
                 player2.rpsSelection = snapshot.val().p2choice;
+
 
                 var winner = determineWinner(player1.rpsSelection, player2.rpsSelection);
 
@@ -251,7 +257,7 @@ $(document).ready(function () {
 
                     $("#announcement-display").text(player1.name + " is the winner in this round!");            
 
-                    database.ref().update({
+                    database.update({
                         p1Wins: player1.win,
                         p2Losses: player2.loss,
                         playerTurn: playerTurn
@@ -269,7 +275,7 @@ $(document).ready(function () {
 
                     $("#announcement-display").text(player2.name + " is the winner in this round!");
 
-                    database.ref().update({
+                    database.update({
                         p2Wins: player2.win,
                         p1Losses: player1.loss,
                         playerTurn: playerTurn
@@ -279,7 +285,7 @@ $(document).ready(function () {
                 {
                     $("#announcement-display").text("It's a tie!");
                 }
-                setTimeout(resetTurn, 4000);
+                setTimeout(resetTurn, 4500);
             }              
         }
         
@@ -319,13 +325,11 @@ $(document).ready(function () {
             playerTurn = 2;
 
             //Push to database
-            database.ref().update({
+            database.update({
                 p1choice : selection,
                 playerTurn: playerTurn
             });
 
-            //After player 1 has made the selection then hide the rsp options
-            $(".playerBtn1").hide();
             displaySelection(selection, "1");
 
         }
@@ -335,13 +339,11 @@ $(document).ready(function () {
             playerTurn = 0; 
 
             //Push to database
-            database.ref().update({
+            database.update({
                 p2choice : selection,
                 playerTurn: playerTurn
             });
 
-            //After player 2 has made the selection then hide the rsp options
-            $(".playerBtn2").hide();
             displaySelection(selection, "2");
         }     
     });
@@ -399,27 +401,6 @@ $(document).ready(function () {
             $("#messages").append(newLi);
         }
     });
-
-    // // When the user closes the window or tab
-	// $(window).unload(function(){
-	// 	// If the player is p1, reset the p1 DB values
-	// 	if(whoAmI === "player1") {
-	// 		database.ref().update({
-	// 			p1Name: null,
-	// 			p1Wins: 0,
-	// 			p1Losses: 0
-	// 		});
-
-	// 	}
-	// 	// If the player is p2, reset the p2 DB values
-	// 	else if(whoAmI === "player2") {
-	// 		database.ref().update({
-	// 			p2Name: null,
-	// 			p2Wins: 0,
-	// 			p2Losses: 0
-	// 		});
-	// 	}
-	// });
 })
 
  
