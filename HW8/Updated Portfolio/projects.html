@@ -1,0 +1,151 @@
+<!DOCTYPE <!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="utf-8" />
+    <title>Home Page</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- External Links -->
+    <link rel="stylesheet" type="text/css" href="assets/css/reset.css" />
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
+    <link rel="stylesheet" type="text/css" href="assets/css/style.css" />
+    <link rel="stylesheet" type="text/css" href="assets/css/hover-min.css">
+    <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+    <!-- External font links -->
+    <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bungee+Inline" rel="stylesheet">
+
+</head>
+
+<body style="background-color: #FEC201">
+
+    <!-- NavBar -->
+    <nav class="navbar navbar-dark navbar-expand-sm" style="background-color: #0B0C10">
+        <button style="border: 2px solid #b19cd9;" class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar"></button>
+        <div class="collapse navbar-collapse justify-content-end" id="collapsibleNavbar">
+            <ul class="navbar-nav">
+                <li class="nav-item">
+                    <a style="color:#c2eec7" class="nav-link" href="index.html">Home |</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #E9A1B9" class="nav-link" href="bio.html">About Me |</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #FEC201" class="nav-link" href="projects.html">Portfolio |</a>
+                </li>
+                <li class="nav-item">
+                    <a style="color: #03C9C9" class="nav-link" href="contact.html">Contact |</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+    <br>
+    <br>
+
+    <h2 class="projectPageH2 hvr-buzz">Projects</h2>
+    <br>
+    <div class="containerProjects">
+        <div class="row">
+            <div class="col-md-8">
+                <div class="row">
+
+                    <div class="col-md-4 image-div">
+                        <img class="thumbnail" src="assets/images/Pic_rps.png" alt="RPS Game">
+                        <div class="overlay">
+                            <div class="text">Rock Paper Scissor Multiplayer
+                                <br>
+                                <p class="thumbnail-description">This assignment focuses on using firebase to store player's info so that multiplayer is possible</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 image-div">
+                        <img class="thumbnail" src="assets/images/Pic_trivia.png" alt="Trivia Game">
+                        <div class="overlay">
+                            <div class="text">Trivia Game
+                                <br>
+                                <p class="thumbnail-description">This assignment focuses on Javascript Timing Events: setTimout and setInterval. Utilizing
+                                    these methods to add count-down timer to the game</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 image-div">
+                        <img class="thumbnail" src="assets/images/boredombeater.png" alt="Boredom Beater">
+                        <div class="overlay">
+                            <div class="text">Boredom Beater
+                                <br>
+                                <p class="thumbnail-description">This project focuses on making multiple Ajax calls to APIs to requests information based
+                                    on user's input. We used Google, Apixu and Eventful APIs</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="row">
+                    <div class="col-md-4 image-div">
+                        <img class="thumbnail" src="assets/images/Pic_crystals.png" alt="Crystal Collector">
+                        <div class="overlay">
+                            <div class="text">Crystal Collector
+                                <br>
+                                <p class="thumbnail-description">This assignment focuses on accessing the DOM via jQuery</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 image-div">
+                        <img class="thumbnail" src="assets/images/Pic_hangman.png" alt="Hangman Game">
+                        <div class="overlay">
+                            <div class="text">Hangman Game
+                                <br>
+                                <p class="thumbnail-description">This assignment focuses on accessing the DOM via Javascript</p>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="col-md-4 image-div">
+                        <img class="thumbnail" src="assets/images/Pic_gifastic.png" alt="Giftastic">
+                        <div class="overlay">
+                            <div class="text">Giftastic
+                                <br>
+                                <p class="thumbnail-description">This assignment focuses on making Ajax call to the giphy API</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+            <div class="col-md-4" id="project-overview">
+                <p>I had so much fun working on these projects for class and I hope you enjoy them too. Be sure to check back
+                    once in a while because I will be adding new projects as I progress through my fullstack development
+                    program, as well as making improvements to exsiting ones. You can check out my github for source codes</p>
+            </div>
+        </div>
+    </div>
+
+
+    <!--Footer  -->
+    <nav class="footer navbar fixed-bottom" style="background-color:#0B0C10">
+        <div class="social-media-icons">
+            <a href="https://www.linkedin.com/in/mai-anh-nguyen-9417882a/">
+                <img class="hvr-bob" src="assets/images/linkedin.png" width="25" height="25">
+            </a>
+            <a href="https://github.com/anhnx008/anhnx008.github.io">
+                <img class="hvr-bob" src="assets/images/githubicon.png" width="30" height="30">
+            </a>
+            <a href="contact.html">
+                <img class="hvr-bob" src="assets/images/email.png" width="30" height="30">
+            </a>
+        </div>
+    </nav>
+
+
+    <!--External scripts  -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.0/umd/popper.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.1.0/js/bootstrap.min.js"></script>
+    <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+</body>
+<html>

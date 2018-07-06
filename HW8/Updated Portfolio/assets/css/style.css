@@ -1,0 +1,301 @@
+body {
+    padding: 0;
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+}
+
+.footer{
+    z-index: 1;
+}
+
+.social-media-icons{
+    margin-left: 45%;
+}
+
+.containerHome{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin-top: 1%;
+}
+
+.nav-item{
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+}
+
+/* Home Page (index.html) */
+#indexPageH2{
+    font-family: 'Bungee Inline', cursive;
+    font-size: 80px;
+    color: #c2eec7;
+}
+
+#indexPageH3{
+    font-family: 'Bungee Inline', cursive;
+    font-size: 80px;
+    color: #c2eec7;
+
+    overflow: hidden; /* Ensures the content is not revealed until the animation */    
+    white-space: nowrap; /*Keeps the content on a single line*/
+    margin: 0 auto; /* Gives that scrolling effect as the typing happens */
+    letter-spacing: .15em; /* Adjust as needed */
+    animation: 
+      typing 3s steps(30, end),
+      blink-caret .5s step-end;
+}
+
+  /* The typing effect */
+  @keyframes typing {
+    from { width: 0 }
+    to { width: 100% }
+  }
+  
+  /* The typewriter cursor effect */
+  @keyframes blink-caret {
+    from, to { border-color: transparent }
+    50% { border-color: #c2eec7 }
+  }
+
+#introduction{
+    font-family: 'Amatic SC', cursive;
+    font-size: 60px;
+    color :#c2eec7;
+    text-align: center;
+}
+
+.options-btn{
+    width: 250px;
+    height: 150px;
+    font-size: 35px;
+    background: transparent;
+    font-family: 'Amatic SC', cursive;
+    border-radius: 5px;
+    text-align: center;
+    margin-left:20%;
+}
+
+#aboutBtn{
+    margin-top: 3%;
+    border: dashed 2px #E9A1B9;
+    margin-bottom: 5%;
+    box-shadow: 20px 30px 34px -24px rgba(233, 161, 185, 0.3)
+}
+
+#projectBtn{
+    border: dashed 2px #FEC201;
+    margin-bottom: 5%;
+    box-shadow: 20px 30px 34px -24px rgba(254, 194, 1, 0.3)
+}
+
+#contactBtn{
+    border: dashed 2px #03C9C9;
+    margin-bottom: 5%;
+    box-shadow: 20px 30px 34px -24px rgba(3, 201, 201, 0.3)
+}
+
+/*** About Me Page (bio.html)***/
+.containerBio{
+    width: 100%;
+    height: 100%;
+    padding: 0;
+    margin-top: 3%;
+}
+
+.bioPageH2{
+    font-family: 'Bungee Inline', cursive;
+    font-size: 45px; 
+    text-align: center; 
+    color: #fff5ba;
+}
+
+.skill-list{
+    font-size: 35px;
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-weight: 600;
+    color: white;
+}
+
+.skill-item{
+    margin-bottom: 15px;
+}
+
+.slideshow-container{
+    width: 100%;
+    position: relative;
+    margin: auto;
+    margin-top: 100px;
+}
+
+.bio-section-slide{
+    font-size: 35px;
+    font-family: 'Amatic SC';
+    margin-left: 170px;
+    font-weight: 600;
+    color: white;
+    width: 60%;
+    text-align: center;
+}
+
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    width: auto;
+    margin-top: -22px;
+    padding: 16px;
+    font-weight: bold;
+    font-size: 18px;
+    transition: 0.6s ease;
+    border-radius: 0 3px 3px 0;
+  }
+
+  /* Position the "next button" to the right */
+.next {
+    right: 0;
+    border-radius: 3px 0 0 3px;
+  }
+  
+  /* On hover, add a black background color with a little bit see-through */
+  .prev:hover, .next:hover {
+    background-color: rgba(255,255,255,0.5);
+  }
+
+  /* Number text (1/6 etc) */
+.slide-number {
+    color: #f2f2f2;
+    font-size: 25px;
+    padding: 8px 12px;
+    position: absolute;
+    top: -100;
+    font-weight: bold;
+  }
+  
+  /* The dots/bullets/indicators */
+  .dot {
+    cursor: pointer;
+    height: 15px;
+    width: 15px;
+    margin: 0 2px;
+    background-color: #ddd189;
+    border-radius: 50%;
+    display: inline-block;
+    transition: background-color 0.5s ease;
+  }
+  
+  .active, .dot:hover {
+    background-color: #fff5ba;
+  }
+
+  .dotDiv{
+      margin-top: 100px;
+  }
+
+
+
+/*** Porfolio Page (projects.html)***/
+.containerProjects{
+    margin-right: 25px;
+    margin-left: 25px;
+    margin-top: 25px;
+}
+
+.projectPageH2{
+    text-align: center;
+    font-family: 'Bungee Inline', cursive;
+    font-size: 45px; 
+    margin-left: 25px;
+}
+
+#project-overview{
+    font-size: 30px;
+    font-family: 'Amatic SC', cursive;
+    text-align: center;
+    font-weight: 600;
+    line-height: 2;
+}
+
+.thumbnail{
+    margin-bottom: 80px;
+    border-radius: 5px 5px;
+    width: 260px;
+    height: 260px;
+    display: block;
+}
+
+.overlay {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    width: 260px;
+    height: 260px;
+    opacity: 0;
+    transition: .5s ease;
+    background-color: black;
+    color: white;
+    border-radius: 5px 5px;
+  }
+
+  .text{
+    text-align: center;
+    font-family: 'Amatic SC', cursive;
+    font-size: 30px;
+    margin-top: 10%;
+  }
+  
+  .image-div{
+    position: relative;
+    width: 50%;   
+  }
+
+  .image-div:hover .overlay {
+    opacity: 1;
+  }
+
+  .thumbnail-description{
+      font-family: Arial, Helvetica, sans-serif;
+      font-size: 15px;
+  }
+
+
+  /*** Contact Form (contact.html) ***/
+#contactHeadingText{
+    font-family: 'Bungee Inline', cursive;
+    font-size: 35px; 
+}
+
+#contact-form-div{
+    margin-top: 1%;
+}
+
+.contactHeaderDiv{
+    margin-left: 4%;
+    text-align: center;
+}
+
+label{
+    font-family: 'Amatic SC', cursive;
+    font-size: 25px;
+    font-weight: bold;
+}
+
+textarea{
+    resize: none;
+}
+
+#name-input, #email-input, #message-input{
+    background: transparent;
+    border: 2px dashed black;
+    box-shadow: 10px 28px 24px -16px hsla(0,0%,0%,.5);
+}
+
+#sendBtn{
+    background: transparent;
+    border: 2px solid black;
+    font-family: 'Bungee Inline', cursive;
+    box-shadow: 2px 5px #686868;
+    padding: 8px;
+}
