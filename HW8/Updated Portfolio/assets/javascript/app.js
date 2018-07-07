@@ -3,18 +3,55 @@ $(document).ready(function(){
 //Initialize the AOS library
 AOS.init();
 
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyD0OkicZZ--3ktgGy-022L5XP9UkmsiVbk",
+    authDomain: "portfolio-a5932.firebaseapp.com",
+    databaseURL: "https://portfolio-a5932.firebaseio.com",
+    projectId: "portfolio-a5932",
+    storageBucket: "portfolio-a5932.appspot.com",
+    messagingSenderId: "989668262433"
+  };
+  firebase.initializeApp(config);
+
+  var database = firebase.database().ref("ContactInfo");
+
+
+
+  //When user's click send in contact form
+  $("#sendBtn").on("click", function(event)
+{
+    event.preventDefault();
+
+    var name = $("#name-input").val().trim();
+    var email = $("#email-input").val().trim();
+    var message = $("#message-input").val().trim();
+
+    database.push({
+        Name: name,
+        Email: email,
+        Message: message,
+    })
+
+    //Clear all input fields after user submit
+    $("#name-input").val("");
+    $("#email-input").val("");
+    $("#message-input").val("");
+})
 
 //Listen to event's click for slide show
-$(".prev").on("click", function(){
+$(".prev").on("click", function(event){
+    event.preventDefault();
     plusSlides(-1);
 })
 
-$(".next").on("click", function(){
+$(".next").on("click", function(event){
+    event.preventDefault();
     plusSlides(1);
 })
 
-$(".dot").on("click", function(){
-
+$(".dot").on("click", function(event){
+    event.preventDefault();
     currentSlideNum = $(this).attr("value");
     currentSlide(currentSlideNum);
 })
@@ -55,6 +92,9 @@ function showSlides(n) {
   slides[slideIndex-1].style.display = "block"; 
   dots[slideIndex-1].className += " active";
 }
+
+
+
 
 
 });

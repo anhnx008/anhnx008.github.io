@@ -195,7 +195,6 @@ body {
   }
 
 
-
 /*** Porfolio Page (projects.html)***/
 .containerProjects{
     margin-right: 25px;
@@ -253,6 +252,7 @@ body {
 
   .image-div:hover .overlay {
     opacity: 1;
+    border: #03C9C9 4px solid;
   }
 
   .thumbnail-description{
@@ -298,4 +298,17 @@ textarea{
     font-family: 'Bungee Inline', cursive;
     box-shadow: 2px 5px #686868;
     padding: 8px;
+}
+
+/* Media queries */
+/* For browser window 600px or smaller move the header all the way to the left*/
+@media screen and (max-width: 600px)
+{
+    .bioP{
+        margin-left: -65%;
+    }
+
+    .image-div{
+        margin-left:15%;
+    }
 }
