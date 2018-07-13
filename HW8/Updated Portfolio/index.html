@@ -15,6 +15,7 @@
 
     <!-- External font links -->
     <link href="https://fonts.googleapis.com/css?family=Amatic+SC|Bungee+Inline" rel="stylesheet">
+    <script src="assets/javascript/scramble.js"></script>
 
 </head>
 
@@ -49,8 +50,8 @@
                 <h2 id="indexPageH2" data-aos="fade-down">Hi,</h2>
                 <h3 id="indexPageH3">I'm Anh</h3>
                 <br>
-                <p>Full-time software test engineer</p>
-                <p>Fullstack developer in progress...</p>
+                <p class="ptest1"></p>
+                <p class="ptest2"></p>
             </div>
             <div class="col-xs-12 col-sm-6 col-md-4" id="options">
                 <button data-aos="fade-left" data-aos-duration="3000" class="options-btn" id="aboutBtn">
@@ -91,5 +92,14 @@
     <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
     <script src="https://www.gstatic.com/firebasejs/5.2.0/firebase.js"></script>
     <script src="assets/javascript/app.js"></script>
+
+    <script>
+        Scramble.select('p.ptest1')
+        .setText('Full-time software test engineer')
+        .descramble()
+        Scramble.select('p.ptest2')
+        .setText('Fullstack developer in progress...')
+        .descramble()
+   </script>
 </body>
 </html>
