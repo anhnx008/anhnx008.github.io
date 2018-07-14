@@ -12,10 +12,24 @@ var spotifyClient = new Spotify(keys.spotify);
 var twitterClient = new Twitter(keys.twitter);
 
 var userInputValue = "";
+var logInput = "";
 var command = process.argv[2];
 var inputArgs = process.argv;
 
-var commandAndValue = inputArgs.slice(2);
+//Get user's input after the command
+for (var i = 3; i < inputArgs.length; i++) {
+
+    if (i > 3 && i < inputArgs.length) {
+        userInputValue = userInputValue + "+" + inputArgs[i];
+        logInput = logInput + " " + inputArgs[i];
+    } 
+    else { 
+        userInputValue += inputArgs[i];
+        logInput += inputArgs[i];  
+    }
+  }
+
+var commandAndValue = command + " " + logInput + "\r\n";
 
 //Log the inputARgs to a text file
 fs.appendFile("log.txt", commandAndValue, function(error)
@@ -23,29 +37,12 @@ fs.appendFile("log.txt", commandAndValue, function(error)
     if (error) {
         return console.log(error);
       }
-    else{
-
-    }
 });
 
-//Only values after the command
-for (var i = 3; i < inputArgs.length; i++) {
-
-    if (i > 3 && i < inputArgs.length) {
-
-        userInputValue = userInputValue + "+" + inputArgs[i]; 
-    }
-  
-    else {
-  
-        userInputValue += inputArgs[i];  
-    }
-  }
-
-//Get tweets
+//Get tweets from twitter
 function getTweets() {
     var count = 1;
-    twitterClient.get('statuses/user_timeline', function (error, data) {
+    twitterClient.get('statuses/user_timeline', {count:20}, function (error, data) {
         if (error) throw error;
 
         console.log("Your tweets are: \n");
@@ -57,9 +54,9 @@ function getTweets() {
     });
 }
 
-//Get movie info
-function getMovieInfo() {
-    var movieTitle = userInputValue;
+//Get movie info from omdb
+function getMovieInfo(userinput) {
+    var movieTitle = userinput;
 
     if(movieTitle === "")
     {
@@ -86,10 +83,10 @@ function getMovieInfo() {
     })
 }
 
-//Get song info
-function getSongInfo(){
+//Get song info from spotify
+function getSongInfo(userinput){
 
-    var songTitle = userInputValue;
+    var songTitle = userinput;
 
     if(songTitle === "")
     {
@@ -114,13 +111,22 @@ function getCommandFromFile()
         {
             console.log(error);
         }
+        var command= data.substr(0, data.indexOf(',')); 
+        var values = data.substr(data.indexOf(',') + 1);
 
-        var string1 = data.slice[1];
+        if(command === "spotify-this-song")
+        {
+            getSongInfo(values);
+        }
+    });
+}
 
-        console.log("String1: " + string1);
-
-
-});
+//Post a tweet
+function postTweet(userinput)
+{
+    twitterClient.post('statuses/update', { status: userinput }, function (error, tweet) {
+        if (error) throw error;
+    });     
 }
 
 //Execute the specified command
@@ -129,22 +135,28 @@ if (command === "my-tweets") {
 }
 else if(command === "spotify-this-song")
 {
-    getSongInfo();
+    getSongInfo(userInputValue);
 }
 else if(command === "movie-this")
 {
-    getMovieInfo();
+    getMovieInfo(userInputValue);
 }
 else if(command === "do-what-it-says")
 {
     getCommandFromFile();
 }
-// else if(command === "post-tweet")
-// {
-
-// }
-// else{
-//     console.log("I'm sorry, I don't understand that command");
-// }
+else if(command === "post-tweet")
+{
+    postTweet(logInput);
+}
+else{
+    console.log("I'm sorry, I don't understand that command.");
+    console.log("Supported commands are: \r\n");
+    console.log("my-tweets");
+    console.log("spotify-this-song <song name here>");
+    console.log("movie-this <your movie");
+    console.log("do-what-it-says");
+    console.log("post-tweet <your tweet>");
+}
 
 
