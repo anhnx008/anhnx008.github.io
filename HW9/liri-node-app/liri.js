@@ -56,7 +56,9 @@ function getTweets() {
 
 //Get movie info from omdb
 function getMovieInfo(userinput) {
-    var movieTitle = userinput;
+    
+    //Replace single string with double quotes since window for some reason interprets it different
+    var movieTitle = userinput.replace(/'/g, '"');;
 
     if(movieTitle === "")
     {
