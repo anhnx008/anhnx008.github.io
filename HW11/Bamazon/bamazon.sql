@@ -12,13 +12,13 @@ CREATE TABLE products (
 );
 
 INSERT INTO products(product_name, department_name, price, stock_quantity)
-VALUES ("Cardigan", "Clothing", 20.00, 5),
+VALUES ("Cardigan", "Clothing", 20.95, 5),
 	   ("Jean", "Clothing", 25.50, 30),
-       ("Chromebook", "Electronics", 199.00, 10),
+       ("Chromebook", "Electronics", 199.50, 10),
        ("Chromecast", "Electronics", 29.99, 2),
-       ("Microwave", "Kitchen Appliances", 70.00, 5),
+       ("Microwave", "Kitchen Appliances", 70.55, 5),
        ("Blender", "Kitchen Appliances", 29.99, 7),
-       ("Flip flop", "Shoes", 5.00, 40),
+       ("Flip flop", "Shoes", 5.85, 40),
        ("Amazon Echo", "Electronics", 39.99, 12),
        ("Coffee Maker", "Kitchen Appliances", 25.99, 4),
        ("Sweater", "Clothing", 14.95, 10);
