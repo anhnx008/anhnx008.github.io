@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.0/css/bootstrap.min.css">
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+    <script src="https://code.jquery.com/jquery.js"></script>
 
 </head>
 
@@ -183,46 +184,70 @@
         <footer>
             <div class="footerContainer">
                 <p>
-                    <a href="/api/friends">API Friends List</a> " | " <a href="">GitHub Repo</a>
+                    <a href="/api/friend">API Friends List</a> | <a href="https://github.com/anhnx008/anhnx008.github.io/tree/master/HW12/FriendFinder">GitHub Repo</a>
                 </p>
             </div>
         </footer>
 
+        <!-- Modal -->
+        <div id="results-modal" class="modal fade" role="dialog">
+                <div class="modal-dialog">
+            
+                  <!-- Modal content-->
+                  <div class="modal-content">
+                    <div class="modal-header">
+                      <button type="button" class="close" data-dismiss="modal">×</button>
+                      <h2 class="modal-title"><strong>Best Match</strong></h2>
+                    </div>
+                    <div class="modal-body">
+                      <h2 id="match-name"></h2>
+                      <img id="match-img" src="" alt="Photo">
+                    </div>
+                    <div class="modal-footer">
+                      <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    </div>
+                  </div>
+            
+                </div>
+              </div>
+
     </div>
 
 
-    <!-- SCRIPT -->
-    <script>        
+<!-- SCRIPT -->
+<script type="text/javascript">        
+
 $(document).ready(function (){
 
         //Function to check if all questions have been answered
         function completeQuestionaire() {
-            var isEmpty = true;
+            var isNotEmpty = false;
 
             $(".chosen-select").each(function () {
 
                 var value = $(this).val();
                 if(value === "empty")
                 {
-                    isEmpty = true;
+                    isNotEmpty = false;
                 }
                 else if(value != "empty"){
-                    isEmpty = false;
+                    isNotEmpty = true;
                 }
             });
 
-            return isEmpty;
+            return isNotEmpty;
         }
 
         //When submit button is clicked, gather user's inputs
-        $("#submitBtn").on("click", function (event) {
+        $("#submitBtn").on("click", function(event) {
             event.preventDefault();
 
             var userName = $('#name').val().trim();
             var userPhoto = $('#photo').val().trim();
 
             //Check if user have enter all the requested info
-            if(userName.length > 0 && userPhoto.length > 0 && completeQuestionaire()) {
+            if(userName.length > 0 && userPhoto.length > 0 && completeQuestionaire()) 
+            {
 
                 var userInput = {
                     name: userName,
@@ -241,20 +266,25 @@ $(document).ready(function (){
                     ]
                 };
 
-                console.log("Successfully submitted")
+                console.log("Successfully submitted");
             }
             else {
                 alert("Please fill out all the requested info before submitting");
             }
 
-        })
-
         //Post the user's inputs to the friend.js file
-        $.post("api/friend", userInput, function(data){
+        $.post("/api/friend", userInput, function(data){
 
+            //If data exists, display results in the modal
+            if(data){
+                
+                console.log(data);
+            }
         })
     });
-    </script>
+});
+
+</script>
 </body>
 
 </html>

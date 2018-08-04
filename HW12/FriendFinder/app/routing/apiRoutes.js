@@ -5,12 +5,12 @@ var friendData = require("../data/friend.js");
 module.exports = function(app){
 
     //API GET requests- returns friendData (from friend.js)
-    api.get("/api/friend", function(req, res){
+    app.get("/api/friend", function(req, res){
         res.json(friendData);
     });
 
     //API POST requests- take in new user's data and return most compatible match
-    app.post("api/friend", function(req, res){
+    app.post("/api/friend", function(req, res){
 
         var newUser = req.body;
 
@@ -26,9 +26,9 @@ module.exports = function(app){
                 var  totalDiff = 0;
                 
                 //Loop through the score from the questionaire and find the total difference
-                for(var i = 0; i < questionnaireAnswer.length; i++)
+                for(var i = 0; i < newUser.scores.length; i++)
                 {
-                    totalDiff += Math.abs(newUser.score[i] - existingUser.score[i]);
+                    totalDiff += Math.abs(newUser.scores[i] - existingUser.scores[i]);
                 }
 
                 //If the totalDiff is a smaller value then minDiff with it and set corresponding name and photo
@@ -36,7 +36,7 @@ module.exports = function(app){
                 if(totalDiff < minDiff[0])
                 {
                     //Get potential candidate info
-                    minDiff[0] = totalDifference;
+                    minDiff[0] = totalDiff;
                     minDiff[1] = existingUser.name;
                     minDiff[2] =existingUser.photo;
 
@@ -48,7 +48,7 @@ module.exports = function(app){
                 else if(totalDiff === minDiff[0]){
 
                     //Get potential candidate info
-                    minDiff[0] = totalDifference;
+                    minDiff[0] = totalDiff;
                     minDiff[1] = existingUser.name;
                     minDiff[2] =existingUser.photo;
                     
@@ -66,7 +66,7 @@ module.exports = function(app){
         }
 
         //Push new client's data to friend.js (friendData)
-        friendData.push(req.body);
+        friendData.push(newUser);
         
     })
 }

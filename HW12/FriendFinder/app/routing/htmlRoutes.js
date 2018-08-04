@@ -1,12 +1,14 @@
 var path = require("path");
 
 module.exports = function(app){
+    //Home page
     app.get("/", function(req, res){
-        res.sendFiles(path.join(__dirname, "../public/home.html"))
+        res.sendFile(path.join(__dirname, "../public/home.html"))
     });
 
+    //Server page
     app.get("/survey", function(req, res){
-        res.sendFiles(path.join(__dirname, "../public/survey.html"))
+        res.sendFile(path.join(__dirname, "../public/survey.html"))
     });
 
     // If no matching route is found default to home
