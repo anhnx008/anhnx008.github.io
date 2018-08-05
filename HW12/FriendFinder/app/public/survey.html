@@ -11,6 +11,8 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
     <script src="https://code.jquery.com/jquery.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js"></script>
+
 
 </head>
 
@@ -196,12 +198,10 @@
                   <!-- Modal content-->
                   <div class="modal-content">
                     <div class="modal-header">
+                      <h2 class="modal-title"><strong></strong></h2>
                       <button type="button" class="close" data-dismiss="modal">×</button>
-                      <h2 class="modal-title"><strong>Best Match</strong></h2>
                     </div>
-                    <div class="modal-body">
-                      <h2 id="match-name"></h2>
-                      <img id="match-img" src="" alt="Photo">
+                    <div class="modal-body" id="modal-body-content">
                     </div>
                     <div class="modal-footer">
                       <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
@@ -267,6 +267,8 @@ $(document).ready(function (){
                 };
 
                 console.log("Successfully submitted");
+                console.log("userInput:");
+                console.log(userInput);
             }
             else {
                 alert("Please fill out all the requested info before submitting");
@@ -275,11 +277,42 @@ $(document).ready(function (){
         //Post the user's inputs to the friend.js file
         $.post("/api/friend", userInput, function(data){
 
-            //If data exists, display results in the modal
-            if(data){
-                
-                console.log(data);
+            if(data)
+            {
+                data.forEach(candidates => {
+
+                    //For each possible match, grab the name and photo 
+                    var candidateName = candidates.name;
+                    var candidatePhoto = candidates.photo;
+                    var profileDiv = $("<div>");
+                    
+                    //Create div that contain name and photo of the candidate
+                    var profileName = $("<h3>").text(candidateName);
+                    var profilePhoto = $("<img height='260' width='260'>").attr('src', candidatePhoto);
+
+                    //Append the name and photo to the div
+                    profileDiv.append(profileName, profilePhoto);
+
+                    //Append the div to the modal-body-content section
+                    $("#modal-body-content").append(profileDiv);
+                    
+                });
             }
+
+            //Determine if it is only one match or several matches and change the title accordingly
+            if (data.length > 1) 
+            {
+                // Several matches
+                $(".modal-title").text('Your best matches!');
+            } 
+            else 
+            {
+                // Only one match
+                $(".modal-title").text('Your best match!');
+            }
+
+            //Display the modal
+            $("#results-modal").modal();
         })
     });
 });
