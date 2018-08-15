@@ -1,0 +1,41 @@
+body{
+    background-color: yellow;
+}
+
+img{
+    margin-left: 43%; 
+}
+
+.mainTitle{
+    text-align: center;
+}
+
+#burgerInput{
+    width: 25%;
+    margin-left: 35%;
+}
+
+.btn{
+    background-color: #89E894;
+    border: 0.5px dotted black;
+}
+
+#addBurger{
+    background-color: #86d8f7;
+    text-align: center;
+    font-weight: 700;
+}
+
+#already-eaten{
+    margin-right: 10px;
+}
+
+#ready-to-eat{
+    margin-left: 10px;
+}
+
+.mainTitle{
+    color: palevioletred;
+    font-family: 'Monoton', cursive;
+    font-size: 60px;
+}

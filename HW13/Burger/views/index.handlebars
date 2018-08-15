@@ -1,0 +1,57 @@
+<div class="row" id="submit-form">
+
+  <!--Creating new burger  -->
+  <div class="col-md-12" id="submitDiv">
+    <form action="/api/burgers" method="POST">
+      <input type="text" id="burgerInput" name="burger_name" placeholder="What burger would you like...">
+      <button type="submit" id="addBurger">Add The Burger</button>
+    </form>
+  </div>
+  
+</div>
+
+<br><br>
+
+<div class= "row">
+
+    <!--Ready to eat  -->
+    <div class="col-md-6">
+        <h4>Ready to eat!</h4>
+
+        <!--Posting new burger to the available side dynamically  -->
+        <div id="ready-to-eat">
+          {{#each burgers}}
+           {{#unless devoured}}
+          <form action="/api/burgers/{{id}}?_method=PUT" method="POST">
+            <div class="input-group">
+              <li class="form-control">{{id}}. {{burger_name}}</li>
+                <span class="input-group-btn">
+                  <button class="btn devour-button" type="submit">Devour It!</button>
+                </span>
+            </div>
+          </form>
+          {{/unless}}
+        {{/each}}
+        </div>
+    </div>
+
+    <!--Already eaten  -->
+    <div class="col-md-6">
+        <h4>Already Eaten!</h4>
+
+        <!--Posting eaten burger to the eaten side dynamically  -->
+        <div id="already-eaten">
+        {{#each burgers}}
+          {{#if this.devoured}}
+            <div class="input-group">
+              <li class="form-control">{{this.id}}. {{this.burger_name}}</li>
+          {{/if}}
+        {{/each}}
+           </div>
+        </div>
+    </div>
+
+</div>
+
+
+
