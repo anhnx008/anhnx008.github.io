@@ -16,8 +16,6 @@ AOS.init();
 
   var database = firebase.database().ref("ContactInfo");
 
-
-
   //When user's click send in contact form
   $("#sendBtn").on("click", function(event)
 {
@@ -32,6 +30,11 @@ AOS.init();
         Email: email,
         Message: message,
     })
+
+    //This is to reset the animation without the need to reload the page
+    $("#mailBird").removeClass("transform");
+    $("#mailBird").offset(); 
+    $("#mailBird").addClass("transform");
 
     //Clear all input fields after user submit
     $("#name-input").val("");
