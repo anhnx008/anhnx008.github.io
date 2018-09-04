@@ -8,6 +8,7 @@ body {
 
 .footer{
     z-index: 1;
+    height: 35px;
 }
 
 .social-media-icons{
